@@ -4,8 +4,9 @@ local server_running = false
 local server_process = nil
 
 local function start(opts)
+  opts = opts or {}
   if server_running then
-    print("Copiloutre server is already running.")
+    print("🦦 copiloutre server is already running.")
     return
   end
 
@@ -23,34 +24,34 @@ local function start(opts)
     end,
     on_exit = function(_, _data)
       server_running = false
-      print("Copiloutre server stopped.")
+      print("🦦 copiloutre server stopped.")
     end,
   })
 
   if server_process ~= -1 then
     server_running = true
-    print("Copiloutre server started.")
+    print("🦦 copiloutre server started.")
   else
-    print("Failed to start Copiloutre server.")
+    print("Failed to start copiloutre server.")
   end
 end
 
 local function stop()
   if not server_running then
-    print("Copiloutre server is not running.")
+    print("🦦 copiloutre server is not running.")
     return
   end
 
   vim.fn.jobstop(server_process)
   server_running = false
-  print("Copiloutre server stopped.")
+  print("🦦 copiloutre server stopped.")
 end
 
 local function status()
   if server_running then
-    print("Copiloutre server is running.")
+    print("🦦 copiloutre server is running.")
   else
-    print("Copiloutre server is not running.")
+    print("🦦 copiloutre server is not running.")
   end
 end
 
